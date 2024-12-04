@@ -1,4 +1,4 @@
-# FreeRADIUS Microservices
+# Radius Micro
 
 This project focuses on implementing an AAA (Authentication, Authorization, and Accounting) management system specifically designed to authenticate **PPPoE connections for Mikrotik devices**, using a microservices architecture. The system ensures scalability, traceability, and robustness in managing users and services.
 
