@@ -30,7 +30,9 @@ This project focuses on implementing an AAA (Authentication, Authorization, and 
 graph TD;
     Operator-->WebSite-->ApiGateway;
     Auth-->DB;
+    User-->DB;
     ApiGateway-.->Auth-->Cache;
+    ApiGateway-.->User-->Cache;
     ApiGateway-.->FreeRadiusClient;
     FreeRadiusClient-->FreeRadiusDB;
     FreeRadiusServer-->FreeRadiusDB;
