@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option go_package = "proto/pb";
+
+package user;
+
+import "google/protobuf/timestamp.proto";
+
+service UserService{
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns(DeleteUserResponse);
+}
+
+enum Role {
+    reader = 0;
+    agent = 1;
+    admin = 2;
+}
+
+message User{
+    uint64 ID = 1;                 
+    string Name = 2;                     
+    string Email = 3;                   
+    string Password = 4;
+    Role Role = 5;
+    optional google.protobuf.Timestamp  CreatedAt  = 6;
+    optional google.protobuf.Timestamp  UpdatedAt  = 7;
+}
+
+//CreateUser
+message CreateUserRequest{
+    User user = 1;
+}
+message CreateUserResponse{
+    User user = 1;
+}
+
+//GetUser
+message GetUserRequest{
+    uint64 ID = 1;
+}
+message GetUserResponse{
+    User user = 1;
+}
+
+//ListUsers
+message ListUsersRequest{
+    uint64 Skip = 1;
+    uint64 Limit = 2;
+}
+message ListUsersResponse{
+    repeated User users = 1;
+}
+
+//UpdateUser
+message UpdateUserRequest{
+    User user = 1;
+}
+message UpdateUserResponse{
+    User user = 1;
+}
+
+//DeleteUser
+message DeleteUserRequest{
+    uint64 ID = 1;
+}
+message DeleteUserResponse{}
